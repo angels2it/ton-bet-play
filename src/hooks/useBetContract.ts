@@ -3,7 +3,7 @@ import Bet from "../contracts/bet";
 import { useTonClient } from "./useTonClient";
 import { useAsyncInitialize } from "./useAsyncInitialize";
 import { useTonConnect } from "./useTonConnect";
-import { Address, OpenedContract } from "ton-core";
+import { Address, beginCell, OpenedContract, toNano } from "ton-core";
 import { useQuery } from "@tanstack/react-query";
 import { CHAIN } from "@tonconnect/protocol";
 
@@ -29,8 +29,15 @@ export function useBetContract() {
   return {
     value: isFetching ? null : data,
     address: betContract?.address.toString(),
-    sendIncrement: () => {
-      return betContract?.sendIncrement(sender);
+    play: (price: string, value: string) => {
+      sender.send({
+        to: betContract!.address,
+        value: toNano(value),
+        body: beginCell()
+          .storeUint(0, 32)
+          .storeStringTail(price)
+          .endCell(),
+      });
     },
   };
 }

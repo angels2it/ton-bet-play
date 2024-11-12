@@ -10,6 +10,7 @@ import { useTonConnect } from "./hooks/useTonConnect";
 import { CHAIN } from "@tonconnect/protocol";
 import "@twa-dev/sdk";
 import { BetInfo } from "./components/BetInfo";
+import { BetBox } from "./components/BetBox";
 
 const StyledApp = styled.div`
   background-color: #e8e8e8;
@@ -46,6 +47,7 @@ function App() {
             </Button>
           </FlexBoxRow>
           <BetInfo />
+          <BetBox />
           {/* <Counter /> */}
           {/* <TransferTon /> */}
           <History />

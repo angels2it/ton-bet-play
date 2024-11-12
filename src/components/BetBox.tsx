@@ -13,7 +13,7 @@ import {
 import { useBetContract } from "../hooks/useBetContract";
 import { useState } from "react";
 
-export function BetInfo() {
+export function BetBox() {
   const { connected } = useTonConnect();
   const { value, address, play } = useBetContract();
   const [tonAmount, setTonAmount] = useState("0.01");
@@ -25,15 +25,34 @@ export function BetInfo() {
 
       <Card>
         <FlexBoxCol>
-          <h3>TON BET - BTC Price</h3>
+          <h3>Bet now!!</h3>
           <FlexBoxRow>
-            <b>Address</b>
-            <Ellipsis>{address}</Ellipsis>
+            <label>BTC price? </label>
+            <Input
+              style={{ marginRight: 8 }}
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            ></Input>
           </FlexBoxRow>
           <FlexBoxRow>
-            <b>Total players</b>
-            <div>{value ?? "Loading..."}</div>
+            <label>Amount </label>
+            <Input
+              style={{ marginRight: 8 }}
+              type="number"
+              value={tonAmount}
+              onChange={(e) => setTonAmount(e.target.value)}
+            ></Input>
           </FlexBoxRow>
+          <Button
+            disabled={!connected}
+            className={`Button ${connected ? "Active" : "Disabled"}`}
+            onClick={() => {
+              play(price, tonAmount);
+            }}
+          >
+            Play
+          </Button>
         </FlexBoxCol>
       </Card>
     </div>
