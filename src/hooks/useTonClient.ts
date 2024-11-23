@@ -12,9 +12,13 @@ export function useTonClient() {
     client: useAsyncInitialize(async () => {
       if (!network) return;
       return new TonClient({
-        endpoint: await getHttpEndpoint({
-          network: network === CHAIN.MAINNET ? "mainnet" : "testnet",
-        }),
+        // endpoint: await getHttpEndpoint({
+
+        //   network: network === CHAIN.MAINNET ? "mainnet" : "testnet",
+        // }),
+        endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC",
+        apiKey:
+          "cdadacf7c9577f86e1f330bfb89d55eae58c5194da979542deda9d1de77bc19c",
       });
     }, [network]),
   };

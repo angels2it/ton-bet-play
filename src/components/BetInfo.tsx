@@ -16,8 +16,6 @@ import { useState } from "react";
 export function BetInfo() {
   const { connected } = useTonConnect();
   const { value, address, play } = useBetContract();
-  const [tonAmount, setTonAmount] = useState("0.01");
-  const [price, setPrice] = useState("0");
 
   return (
     <div className="Container">

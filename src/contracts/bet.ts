@@ -20,6 +20,13 @@ export default class Bet implements Contract {
     const { stack } = await provider.get("get_votes", []);
     return stack.readBigNumber();
   }
+  async getMyVote(provider: ContractProvider, address: Address) {
+    console.log(address)
+    const { stack } = await provider.get("get_my_vote", [
+      { type: "slice", cell: beginCell().storeAddress(address).endCell() },
+    ]);
+    return [stack.readBigNumber(), stack.readBigNumber(), stack.readBigNumber()];
+  }
 
   async sendIncrement(provider: ContractProvider, via: Sender) {
     const messageBody = beginCell()

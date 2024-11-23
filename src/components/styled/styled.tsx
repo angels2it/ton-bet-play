@@ -10,6 +10,16 @@ export const Card = styled.div`
   }
 `;
 
+export const ListItem = styled.div`
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #e8e8e8;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: white;
+  }
+`;
+
 export const FlexBoxRow = styled.div`
   display: flex;
   flex-direction: row;
