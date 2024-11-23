@@ -15,7 +15,7 @@ import { useState } from "react";
 
 export function BetInfo() {
   const { connected } = useTonConnect();
-  const { value, address, play } = useBetContract();
+  const { address } = useBetContract();
 
   return (
     <div className="Container">
@@ -27,10 +27,6 @@ export function BetInfo() {
           <FlexBoxRow>
             <b>Address</b>
             <Ellipsis>{address}</Ellipsis>
-          </FlexBoxRow>
-          <FlexBoxRow>
-            <b>Total players</b>
-            <div>{value ?? "Loading..."}</div>
           </FlexBoxRow>
         </FlexBoxCol>
       </Card>
