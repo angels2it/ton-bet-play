@@ -1,2 +1,2 @@
-export const CONTRACT_MAINNET = "EQAxp7JomrP0iD67oZRu9mhdpnmeXHYcbTV9K0EpsbPgmCMx"
+export const CONTRACT_MAINNET = "EQAmKyVDv7f6ZV5NIMmP_JKllLVabh2zuscYXceNBfyTXAD2"
 export const CONTRACT_TESTNET = "EQAmqMVChhDFMw6q9gZfF_y7QDqDWeQdaXT2ZdaPVt-QGc9Y"

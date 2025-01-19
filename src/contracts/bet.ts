@@ -34,7 +34,7 @@ export default class Bet implements Contract {
     return {
       value: result_p.readBoolean(),
       amount: fromNano(result_p.readBigNumber()),
-      odd: result_p.readNumber()
+      odd: result_p.readNumber(),
     };
   }
 
@@ -103,6 +103,18 @@ export default class Bet implements Contract {
       .endCell();
     await provider.internal(via, {
       value: toNano("0.1"),
+      body: messageBody,
+    });
+  }
+  async sendConfig(provider: ContractProvider, via: Sender) {
+    const messageBody = beginCell()
+      .store((builder) => {
+        builder.storeUint(2025010103, 32);
+        builder.storeInt(2025011901, 257);
+      })
+      .endCell();
+    await provider.internal(via, {
+      value: toNano("0.05"),
       body: messageBody,
     });
   }

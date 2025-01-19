@@ -82,6 +82,9 @@ export function useBetContract() {
     setResult: (value: boolean) => {
       betContract?.sendResult(sender, value);
     },
+    setConfig: () => {
+      betContract?.sendConfig(sender);
+    },
     getTransactions: async () => {
       const address = betContract?.address;
       if (!address) {

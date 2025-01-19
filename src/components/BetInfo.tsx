@@ -16,7 +16,13 @@ import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 export function BetInfo() {
   const { connected, loading } = useTonConnect();
   const [resultValue, setResultValue] = useState("0");
-  const { address, vote, claim, setResult, myVote, balance } = useBetContract();
+  const [now, setNow] = useState(0);
+  const { address, vote, claim, setResult, setConfig, myVote, balance } = useBetContract();
+  useEffect(() => {
+    setInterval(() => {
+      setNow(Math.floor(Date.now() / (60 * 5)));
+    }, 10000);
+  }, []);
   useEffect(() => {
     window.addEventListener("transaction-signed", (event) => {
       console.log("Transaction signed");
@@ -24,10 +30,9 @@ export function BetInfo() {
     window.addEventListener("transaction-sent-for-signature", (event) => {
       console.log("transaction-sent-for-signature");
     });
-
   }, []);
-  const handleVote = (timestamp: bigint, amount: string, value: boolean) => {
-    vote(timestamp, "0.1", false).then((r) => {});
+  const handleVote = (amount: string, value: boolean) => {
+    vote(BigInt(now), "0.1", false).then((r) => {});
   };
   return (
     <div className="Container">
@@ -58,12 +63,12 @@ export function BetInfo() {
             ></AdvancedRealTimeChart>
           </div>
           <FlexBoxRow>
-            <Button className="green" onClick={() => vote(0n, "0.1", true)}>
+            <Button className="green" onClick={() => handleVote("0.1", true)}>
               Xanh
             </Button>
             <Button
               className="red"
-              onClick={() => handleVote(0n, "0.1", false)}
+              onClick={() => handleVote("0.1", false)}
             >
               Đỏ
             </Button>
@@ -102,6 +107,13 @@ export function BetInfo() {
               onClick={() => setResult(resultValue == "1" ? true : false)}
             >
               Cài đặt kết quả
+            </Button>
+          </FlexBoxRow>
+          <FlexBoxRow>
+          <Button
+              onClick={() => setConfig()}
+            >
+              Config
             </Button>
           </FlexBoxRow>
         </FlexBoxCol>
