@@ -3,16 +3,13 @@ import { TonConnectUIProvider, TonConnectUIProviderPropsWithConnector } from "@t
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-// this manifest is used temporarily for development purposes
-const manifestUrl =
-  "https://ton.bidapool.com/tonconnect-manifest.json";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <TonConnectUIProvider manifestUrl={manifestUrl}>
+  <TonConnectUIProvider>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>

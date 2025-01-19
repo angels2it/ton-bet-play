@@ -16,7 +16,7 @@ export function useTonClient() {
 
         //   network: network === CHAIN.MAINNET ? "mainnet" : "testnet",
         // }),
-        endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC",
+        endpoint: network == CHAIN.TESTNET ? "https://testnet.toncenter.com/api/v2/jsonRPC" : "https://toncenter.com/api/v2/jsonRPC",
         apiKey:
           "cdadacf7c9577f86e1f330bfb89d55eae58c5194da979542deda9d1de77bc19c",
       });
