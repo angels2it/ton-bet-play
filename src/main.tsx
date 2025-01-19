@@ -6,7 +6,7 @@ import {
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-const manifestUrl = "https://ton.bidapool.com/tonconnect-manifest.json";
+const manifestUrl = "https://gist.githubusercontent.com/cryptoinmyheart/0609e5586c10bc26fcb6e69ca15cfb17/raw/1288f24920e30cadb955483215fded03378ba2f4/tonconnect-manifest.json";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
