@@ -22,14 +22,15 @@ export function BetInfo() {
 
   const [times, setTimes] = useState<any>([]);
   useEffect(() => {
+    setNow(Math.floor(Date.now() / 1000 / (60 * 5)));
     setInterval(() => {
       setNow(Math.floor(Date.now() / 1000 / (60 * 5)));
     }, 10000);
   }, []);
   useEffect(() => {
     var newList = [];
-    for (let index = 0; index < 10; index++) {
-      let timestamp = now - index * 5;
+    for (let index = 0; index < 5; index++) {
+      let timestamp = now - index;
       newList.push({
         timestamp: timestamp,
         text: new Date(timestamp * 60 * 5 * 1000).toLocaleTimeString(),
