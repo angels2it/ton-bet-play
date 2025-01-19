@@ -5,7 +5,7 @@ import App from "./App";
 import "./index.css";
 // this manifest is used temporarily for development purposes
 const manifestUrl =
-  "https://ton.bidapool.com/manifest.json";
+  "https://ton.bidapool.com/tonconnect-manifest.json";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
