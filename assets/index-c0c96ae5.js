@@ -1227,4 +1227,4 @@ Values:
 `,yue=gs.div`
   max-width: 900px;
   margin: 0 auto;
-`;function bue(){const{network:e}=xv();return Vr(mue,{children:Vr(yue,{children:qa(wI,{children:[qa(Es,{children:[Vr(lI,{style:{float:"left"}}),Vr(cf,{children:e?e===uu.MAINNET?"mainnet":"testnet":"N/A"})]}),Vr(vue,{})]})})})}const wue="https://ton.bidapool.com/tonconnect-manifest.json",xue=new uj({defaultOptions:{queries:{refetchOnWindowFocus:!1}}});Lw.createRoot(document.getElementById("root")).render(Vr(see,{manifestUrl:wue,children:Vr(EH,{client:xue,children:Vr(bue,{})})}));
+`;function bue(){const{network:e}=xv();return Vr(mue,{children:Vr(yue,{children:qa(wI,{children:[qa(Es,{children:[Vr(lI,{style:{float:"left"}}),Vr(cf,{children:e?e===uu.MAINNET?"mainnet":"testnet":"N/A"})]}),Vr(vue,{})]})})})}const wue="https://gist.githubusercontent.com/cryptoinmyheart/0609e5586c10bc26fcb6e69ca15cfb17/raw/1288f24920e30cadb955483215fded03378ba2f4/tonconnect-manifest.json",xue=new uj({defaultOptions:{queries:{refetchOnWindowFocus:!1}}});Lw.createRoot(document.getElementById("root")).render(Vr(see,{manifestUrl:wue,children:Vr(EH,{client:xue,children:Vr(bue,{})})}));
