@@ -7,13 +7,13 @@ import { useTonConnect } from "./useTonConnect";
 import {
   Address,
   beginCell,
+  Builder,
   Cell,
   fromNano,
   OpenedContract,
   toNano,
-} from "ton-core";
+} from "@ton/core";
 import { useQuery } from "@tanstack/react-query";
-import { CHAIN } from "@tonconnect/protocol";
 
 export function msgToStr(msg: Cell | undefined) {
   if (!msg) {
@@ -36,26 +36,35 @@ export function msgToStr(msg: Cell | undefined) {
 
 export function useBetContract() {
   const { client } = useTonClient();
-  const { sender, wallet } = useTonConnect();
+  const { sender, wallet, network } = useTonConnect();
 
   const betContract = useAsyncInitialize(async () => {
-    if (!client) return;
-    const contract = Bet.create();
+    if (!client || !network) return;
+    const contract = Bet.create(network);
     return client.open(contract) as OpenedContract<Bet>;
   }, [client]);
 
   const { data, isFetching } = useQuery(
     ["myVote"],
     async () => {
-      console.log(wallet);
       if (!betContract || !wallet) return null;
-      return await betContract!.getMyVote(Address.parseRaw(wallet));
+      return await betContract!.getMyVote(Address.parse(wallet));
+    },
+    { refetchInterval: 5000 }
+  );
+
+  const { data: myBetBalance } = useQuery(
+    ["myBalance"],
+    async () => {
+      if (!betContract || !wallet) return null;
+      return await betContract!.getBetBalance(Address.parse(wallet));
     },
     { refetchInterval: 5000 }
   );
 
   return {
-    myVote: isFetching ? null : data,
+    myVote: data,
+    balance: myBetBalance ?? 0,
     address: betContract?.address.toString(),
     play: (price: string, value: string) => {
       sender.send({
@@ -63,6 +72,15 @@ export function useBetContract() {
         value: toNano(value),
         body: beginCell().storeUint(0, 32).storeStringTail(price).endCell(),
       });
+    },
+    vote: (timeStamp: bigint, price: string, value: boolean) => {
+      return betContract!.sendVote(sender, timeStamp, price, value);
+    },
+    claim: (price: string) => {
+      betContract?.sendClaim(sender, price);
+    },
+    setResult: (value: boolean) => {
+      betContract?.sendResult(sender, value);
     },
     getTransactions: async () => {
       const address = betContract?.address;

@@ -3,3 +3,11 @@
   --tg-theme-button-color: #2eaddc;
   --tg-theme-button-text-color: white;
 }
+
+
+.red {
+  background-color: red !important;
+}
+.green {
+  background-color: green !important;
+}

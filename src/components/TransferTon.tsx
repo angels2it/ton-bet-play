@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Address, toNano } from "ton";
+import { Address, toNano } from "@ton/ton";
 import { useTonConnect } from "../hooks/useTonConnect";
 import { Card, FlexBoxCol, FlexBoxRow, Button, Input } from "./styled/styled";
 

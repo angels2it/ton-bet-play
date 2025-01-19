@@ -1,4 +1,4 @@
-import { beginCell, toNano, Address, Cell, fromNano } from "ton";
+import { beginCell, toNano, Address, Cell, fromNano } from "@ton/ton";
 import { useTonConnect } from "../hooks/useTonConnect";
 import { useFaucetJettonContract } from "../hooks/useFaucetJettonContract";
 import {

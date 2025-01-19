@@ -37,7 +37,7 @@ function App() {
       <AppContainer>
         <FlexBoxCol>
           <FlexBoxRow>
-            <TonConnectButton />
+            <TonConnectButton style={{float: 'left'}}/>
             <Button>
               {network
                 ? network === CHAIN.MAINNET
@@ -47,10 +47,10 @@ function App() {
             </Button>
           </FlexBoxRow>
           <BetInfo />
-          <BetBox />
+          {/* <BetBox /> */}
           {/* <Counter /> */}
           {/* <TransferTon /> */}
-          <History />
+          {/* <History /> */}
         </FlexBoxCol>
       </AppContainer>
     </StyledApp>
