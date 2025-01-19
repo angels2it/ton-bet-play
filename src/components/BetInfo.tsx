@@ -31,7 +31,7 @@ export function BetInfo() {
     for (let index = 0; index < 10; index++) {
       newList.push({
         timestamp: now - index * 60 * 5,
-        text: new Date(now * 60 * 5 * 1000),
+        text: new Date(now * 60 * 5 * 1000).toLocaleTimeString(),
       });
     }
     setTimes(newList);
