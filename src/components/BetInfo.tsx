@@ -17,7 +17,8 @@ export function BetInfo() {
   const { connected, loading } = useTonConnect();
   const [resultValue, setResultValue] = useState("0");
   const [now, setNow] = useState(0);
-  const { address, vote, claim, setResult, setConfig, myVote, balance } = useBetContract();
+  const { address, vote, claim, setResult, setConfig, myVote, balance } =
+    useBetContract();
   useEffect(() => {
     setInterval(() => {
       setNow(Math.floor(Date.now() / (60 * 5)));
@@ -66,10 +67,7 @@ export function BetInfo() {
             <Button className="green" onClick={() => handleVote("0.1", true)}>
               Xanh
             </Button>
-            <Button
-              className="red"
-              onClick={() => handleVote("0.1", false)}
-            >
+            <Button className="red" onClick={() => handleVote("0.1", false)}>
               Đỏ
             </Button>
           </FlexBoxRow>
@@ -110,11 +108,7 @@ export function BetInfo() {
             </Button>
           </FlexBoxRow>
           <FlexBoxRow>
-          <Button
-              onClick={() => setConfig()}
-            >
-              Config
-            </Button>
+            <Button onClick={() => setConfig()}>Config</Button>
           </FlexBoxRow>
         </FlexBoxCol>
       </Card>
