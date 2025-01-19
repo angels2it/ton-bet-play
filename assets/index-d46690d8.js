@@ -1227,4 +1227,4 @@ Values:
 `,yue=gs.div`
   max-width: 900px;
   margin: 0 auto;
-`;function bue(){const{network:e}=xv();return tn(mue,{children:tn(yue,{children:qa(wI,{children:[qa($l,{children:[tn(lI,{style:{float:"left"}}),tn(yd,{children:e?e===uu.MAINNET?"mainnet":"testnet":"N/A"})]}),tn(vue,{})]})})})}const wue=new uj({defaultOptions:{queries:{refetchOnWindowFocus:!1}}});Lw.createRoot(document.getElementById("root")).render(tn(see,{children:tn(EH,{client:wue,children:tn(bue,{})})}));
+`;function bue(){const{network:e}=xv();return tn(mue,{children:tn(yue,{children:qa(wI,{children:[qa($l,{children:[tn(lI,{style:{float:"left"}}),tn(yd,{children:e?e===uu.MAINNET?"mainnet":"testnet":"N/A"})]}),tn(vue,{})]})})})}const wue="https://ton.bidapool.com/tonconnect-manifest.json",xue=new uj({defaultOptions:{queries:{refetchOnWindowFocus:!1}}});Lw.createRoot(document.getElementById("root")).render(tn(see,{manifestUrl:wue,children:tn(EH,{client:xue,children:tn(bue,{})})}));
