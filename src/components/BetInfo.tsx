@@ -19,11 +19,23 @@ export function BetInfo() {
   const [now, setNow] = useState(0);
   const { address, vote, claim, setResult, setConfig, myVote, balance } =
     useBetContract();
+
+  const [times, setTimes] = useState<any>([]);
   useEffect(() => {
     setInterval(() => {
-      setNow(Math.floor(Date.now() / (60 * 5)));
+      setNow(Math.floor(Date.now() / 1000 / (60 * 5)));
     }, 10000);
   }, []);
+  useEffect(() => {
+    var newList = [];
+    for (let index = 0; index < 10; index++) {
+      newList.push({
+        timestamp: now - index * 60 * 5,
+        text: new Date(now * 60 * 5 * 1000),
+      });
+    }
+    setTimes(newList);
+  }, [now]);
   useEffect(() => {
     window.addEventListener("transaction-signed", (event) => {
       console.log("Transaction signed");
@@ -87,25 +99,36 @@ export function BetInfo() {
           <h1>ADMIN</h1>
           <FlexBoxRow>
             <span>Kết quả nến gần nhất?</span>
-            <input
-              type="radio"
-              name="result"
-              value="1"
-              onClick={() => setResultValue("1")}
-            ></input>{" "}
-            Xanh
-            <input
-              type="radio"
-              name="result"
-              value="0"
-              onClick={() => setResultValue("0")}
-            ></input>{" "}
-            Đỏ
-            <Button
-              onClick={() => setResult(resultValue == "1" ? true : false)}
-            >
-              Cài đặt kết quả
-            </Button>
+            {times.map((time: any) => {
+              return (
+                <FlexBoxRow key={time.timstamp}>
+                  <input
+                    type="radio"
+                    name="result"
+                    value="1"
+                    onClick={() => setResultValue("1")}
+                  ></input>{" "}
+                  Xanh
+                  <input
+                    type="radio"
+                    name="result"
+                    value="0"
+                    onClick={() => setResultValue("0")}
+                  ></input>{" "}
+                  Đỏ
+                  <Button
+                    onClick={() =>
+                      setResult(
+                        time.timstamp,
+                        resultValue == "1" ? true : false
+                      )
+                    }
+                  >
+                    Cài đặt kết quả cho nến lúc {time.text}
+                  </Button>
+                </FlexBoxRow>
+              );
+            })}
           </FlexBoxRow>
           <FlexBoxRow>
             <Button onClick={() => setConfig()}>Config</Button>

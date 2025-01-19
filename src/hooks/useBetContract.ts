@@ -79,8 +79,8 @@ export function useBetContract() {
     claim: (price: string) => {
       betContract?.sendClaim(sender, price);
     },
-    setResult: (value: boolean) => {
-      betContract?.sendResult(sender, value);
+    setResult: (timestamp: bigint, value: boolean) => {
+      betContract?.sendResult(sender, timestamp, value);
     },
     setConfig: () => {
       betContract?.sendConfig(sender);

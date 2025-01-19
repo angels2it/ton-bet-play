@@ -93,11 +93,11 @@ export default class Bet implements Contract {
     });
   }
 
-  async sendResult(provider: ContractProvider, via: Sender, value: boolean) {
+  async sendResult(provider: ContractProvider, via: Sender, timestamp: bigint, value: boolean) {
     const messageBody = beginCell()
       .store((builder) => {
         builder.storeUint(2025010102, 32);
-        builder.storeInt(0, 257);
+        builder.storeInt(timestamp, 257);
         builder.storeBit(value);
       })
       .endCell();
