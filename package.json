@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "configbot": "node configure.js"
+    "configbot": "node configure.js",
+    "prod": "vite --host ton.bidapool.com"
   },
   "dependencies": {
     "@orbs-network/ton-access": "^2.2.2",

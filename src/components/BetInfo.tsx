@@ -101,7 +101,7 @@ export function BetInfo() {
             <span>Kết quả nến gần nhất?</span>
             {times.map((time: any) => {
               return (
-                <FlexBoxRow key={time.timstamp}>
+                <FlexBoxRow key={time.timestamp}>
                   <input
                     type="radio"
                     name="result"
@@ -119,7 +119,7 @@ export function BetInfo() {
                   <Button
                     onClick={() =>
                       setResult(
-                        time.timstamp,
+                        time.timestamp,
                         resultValue == "1" ? true : false
                       )
                     }
